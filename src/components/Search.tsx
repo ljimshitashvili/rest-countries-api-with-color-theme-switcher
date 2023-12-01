@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { arrow } from "../assets";
 
 function Search() {
   return (
     <Container>
-      <div>
+      <div className="search">
         <svg
           width="16"
           height="16"
@@ -24,6 +25,10 @@ function Search() {
 
         <input type="text" placeholder="Search for a country..." />
       </div>
+      <Filter>
+        <h1 className="filter">Filter by Region</h1>
+        <img src={arrow} alt="" />
+      </Filter>
     </Container>
   );
 }
@@ -32,10 +37,11 @@ export default Search;
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   padding: 0 16px;
 
-  div {
+  .search {
     width: 100%;
     border-radius: 5px;
     background-color: #fff;
@@ -43,11 +49,35 @@ const Container = styled.div`
     padding: 14px 0;
     display: flex;
     gap: 26px;
+    margin-bottom: 40px;
 
     input {
       background-color: transparent;
       border-color: transparent;
       width: 70%;
     }
+  }
+`;
+
+const Filter = styled.div`
+  padding: 14px 19px 14px 24px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  align-items: center;
+
+  .filter {
+    font-size: 12px;
+    color: #111517;
+    font-weight: 400;
+  }
+
+  img {
+    width: 8px;
+    height: 8px;
   }
 `;
