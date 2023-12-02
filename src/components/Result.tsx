@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { Root } from "../types";
+import { Link } from "react-router-dom";
 
 interface Props {
   data: Root[];
@@ -25,21 +26,25 @@ function Result({ data, setData }: Props) {
 
   return (
     <Container>
-      {data.map((item, index) => (
-        <div key={index}>
-          <img src={item.flag} alt="Flag" />
-          <h1>{item.name}</h1>
-          <h2>
-            Population: <span>{item.population}</span>
-          </h2>
-          <h3>
-            Region: <span>{item.region}</span>
-          </h3>
-          <h4>
-            Capital: <span>{item.capital}</span>
-          </h4>
-        </div>
-      ))}
+      {data.map((item, index) => {
+        return (
+          <div key={index}>
+            <Link to={`details/${index}`}>
+              <img src={item.flag} alt="Flag" />
+              <h1>{item.name}</h1>
+              <h2>
+                Population: <span>{item.population}</span>
+              </h2>
+              <h3>
+                Region: <span>{item.region}</span>
+              </h3>
+              <h4>
+                Capital: <span>{item.capital}</span>
+              </h4>
+            </Link>
+          </div>
+        );
+      })}
     </Container>
   );
 }
