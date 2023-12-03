@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { arrow } from "../assets";
 
-function Search() {
+interface Props {
+  light: boolean;
+}
+
+function Search({ light }: Props) {
   return (
     <Container>
       <div className="search">

@@ -4,13 +4,14 @@ import { Root } from "../types";
 interface Props {
   data: Root[];
   setData: (data: Root[]) => void;
+  light: boolean;
 }
 
-function Home({ data, setData }: Props) {
+function Home({ data, setData, light }: Props) {
   return (
     <>
-      <Search />
-      <Result data={data} setData={setData} />
+      <Search light={light} />
+      <Result data={data} setData={setData} light={light} />
     </>
   );
 }

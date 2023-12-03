@@ -4,13 +4,12 @@ import { useParams, Link } from "react-router-dom";
 
 interface Props {
   data: Root[];
+  light: boolean;
 }
 
-function Details({ data }: Props) {
+function Details({ data, light }: Props) {
   const { id } = useParams<{ id: string }>();
-  console.log(id);
   const selectedItem = data.find((_item, index) => index.toString() === id);
-  console.log(id);
   return (
     <Container>
       <Link to="/">

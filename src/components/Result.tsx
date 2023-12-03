@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 interface Props {
   data: Root[];
   setData: (data: Root[]) => void;
+  light: boolean;
 }
 
-function Result({ data, setData }: Props) {
+function Result({ data, setData, light }: Props) {
   useEffect(() => {
     try {
       const fetchData = async () => {

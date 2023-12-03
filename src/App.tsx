@@ -7,14 +7,21 @@ import Details from "./components/Details";
 
 function App() {
   const [data, setData] = useState<Root[]>([]);
+  const [light, setLight] = useState<boolean>(true);
 
   return (
     <Router>
       <Container>
-        <Header />
+        <Header light={light} setLight={setLight} />
         <Routes>
-          <Route path="/" element={<Home data={data} setData={setData} />} />
-          <Route path="/details/:id" element={<Details data={data} />} />
+          <Route
+            path="/"
+            element={<Home data={data} setData={setData} light={light} />}
+          />
+          <Route
+            path="/details/:id"
+            element={<Details data={data} light={light} />}
+          />
         </Routes>
       </Container>
     </Router>
