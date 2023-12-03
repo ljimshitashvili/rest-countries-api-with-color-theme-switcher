@@ -49,11 +49,6 @@ const Container = styled.div<{ light: boolean }>`
     justify-content: space-between;
     align-items: center;
 
-    img {
-      width: 16px;
-      height: 16px;
-    }
-
     h1 {
       font-size: 12px;
       font-weight: 600;
