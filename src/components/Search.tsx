@@ -3,9 +3,17 @@ import { arrow, arrowDark } from "../assets";
 
 interface Props {
   light: boolean;
+  setCountry: (country: string) => void;
+  country: string;
 }
 
-function Search({ light }: Props) {
+function Search({ light, setCountry, country }: Props) {
+  const changeCountryValue = (e: string) => {
+    setCountry(e);
+  };
+
+  console.log(country);
+
   return (
     <Container light={light}>
       <div className="search">
@@ -27,7 +35,11 @@ function Search({ light }: Props) {
           </g>
         </svg>
 
-        <input type="text" placeholder="Search for a country..." />
+        <input
+          type="text"
+          placeholder="Search for a country..."
+          onChange={() => changeCountryValue}
+        />
       </div>
       <Filter light={light}>
         <h1 className="filter">Filter by Region</h1>

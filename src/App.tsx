@@ -8,6 +8,7 @@ import Details from "./components/Details";
 function App() {
   const [data, setData] = useState<Root[]>([]);
   const [light, setLight] = useState<boolean>(true);
+  const [country, setCountry] = useState<string>("");
 
   return (
     <Router>
@@ -16,7 +17,15 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home data={data} setData={setData} light={light} />}
+            element={
+              <Home
+                data={data}
+                setData={setData}
+                light={light}
+                setCountry={setCountry}
+                country={country}
+              />
+            }
           />
           <Route
             path="/details/:id"
