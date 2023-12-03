@@ -11,7 +11,7 @@ function Details({ data, light }: Props) {
   const { id } = useParams<{ id: string }>();
   const selectedItem = data.find((_item, index) => index.toString() === id);
   return (
-    <Container>
+    <Container light={light}>
       <Link to="/">
         <div className="back">
           <svg
@@ -25,7 +25,7 @@ function Details({ data, light }: Props) {
               fill-rule="evenodd"
               clip-rule="evenodd"
               d="M5.81802 0.696699L6.87868 1.75736L3.3785 5.25754H16.7428L16.7428 6.74246H3.3785L6.87868 10.2426L5.81802 11.3033L0.514719 6L5.81802 0.696699Z"
-              fill="#111517"
+              fill={light ? "111517" : "#fff"}
             />
           </svg>
           <p>Back</p>
@@ -87,7 +87,7 @@ function Details({ data, light }: Props) {
 
 export default Details;
 
-const Container = styled.div`
+const Container = styled.div<{ light: boolean }>`
   padding: 0 28px;
   display: flex;
   flex-direction: column;
@@ -97,7 +97,7 @@ const Container = styled.div`
   .back {
     width: 104px;
     height: 32px;
-    background-color: #fff;
+    background-color: ${(p) => (p.light ? "#fff" : "#2B3844")};
     box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.29);
     border-radius: 2px;
     display: flex;
@@ -107,7 +107,7 @@ const Container = styled.div`
     margin: 10px 0 64px 0;
 
     p {
-      color: #111517;
+      color: ${(p) => (p.light ? "#111517" : "#fff")};
       font-size: 14px;
       font-style: normal;
       font-weight: 300;
@@ -122,7 +122,7 @@ const Container = styled.div`
   }
 
   h1 {
-    color: #111517;
+    color: ${(p) => (p.light ? "#111517" : "#fff")};
     font-size: 22px;
     font-style: normal;
     font-weight: 800;
@@ -141,15 +141,14 @@ const Container = styled.div`
   }
 
   p {
-    color: #111517;
+    color: ${(p) => (p.light ? "#111517" : "#fff")};
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
     line-height: 32px;
 
     span {
-      color: #111517;
-      font-family: Nunito Sans;
+      color: ${(p) => (p.light ? "#111517" : "#fff")};
       font-size: 14px;
       font-style: normal;
       font-weight: 300;
@@ -163,13 +162,21 @@ const Container = styled.div`
     width: 100%;
 
     div {
-      background-color: #fff;
+      background-color: ${(p) => (p.light ? "#fff" : "#2B3844")};
       box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
       width: 100%;
       height: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    span {
+      color: ${(p) => (p.light ? "#111517" : "#fff")};
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
     }
   }
 
