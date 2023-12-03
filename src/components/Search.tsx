@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { arrow } from "../assets";
+import { arrow, arrowDark } from "../assets";
 
 interface Props {
   light: boolean;
@@ -7,7 +7,7 @@ interface Props {
 
 function Search({ light }: Props) {
   return (
-    <Container>
+    <Container light={light}>
       <div className="search">
         <svg
           width="16"
@@ -29,9 +29,9 @@ function Search({ light }: Props) {
 
         <input type="text" placeholder="Search for a country..." />
       </div>
-      <Filter>
+      <Filter light={light}>
         <h1 className="filter">Filter by Region</h1>
-        <img src={arrow} alt="" />
+        <img src={light ? arrow : arrowDark} alt="Arrow" />
       </Filter>
     </Container>
   );
@@ -39,7 +39,7 @@ function Search({ light }: Props) {
 
 export default Search;
 
-const Container = styled.div`
+const Container = styled.div<{ light: boolean }>`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -48,24 +48,36 @@ const Container = styled.div`
   .search {
     width: 100%;
     border-radius: 5px;
-    background-color: #fff;
+    background-color: ${(p) => (p.light ? "#fff" : "#2B3844")};
     padding-left: 32px !important;
     padding: 14px 0;
     display: flex;
     gap: 26px;
     margin-bottom: 40px;
+    box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+
+    ::placeholder {
+      color: ${(p) => (p.light ? "#c4c4c4" : "#FFF")};
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+    }
 
     input {
       background-color: transparent;
       border-color: transparent;
       width: 70%;
+      color: ${(p) => (p.light ? "#111517" : "#fff")};
     }
   }
 `;
 
-const Filter = styled.div`
+const Filter = styled.div<{ light: boolean }>`
   padding: 14px 19px 14px 24px;
-  background-color: #fff;
+  background-color: ${(p) => (p.light ? "#fff" : "#2B3844")};
   border-radius: 5px;
   box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
   margin-bottom: 32px;
@@ -76,12 +88,7 @@ const Filter = styled.div`
 
   .filter {
     font-size: 12px;
-    color: #111517;
+    color: ${(p) => (p.light ? "#111517" : "#fff")};
     font-weight: 400;
-  }
-
-  img {
-    width: 8px;
-    height: 8px;
   }
 `;
