@@ -14,7 +14,9 @@ function Result({ data, setData, light }: Props) {
   useEffect(() => {
     try {
       const fetchData = async () => {
-        const response = await axios.get("../../public/data.json");
+        const response = await axios.get(
+          "https://raw.githubusercontent.com/ljimshitashvili/rest-countries-api-with-color-theme-switcher/master/public/data.json"
+        );
         const fetchedData = response.data;
         setData(fetchedData);
       };
