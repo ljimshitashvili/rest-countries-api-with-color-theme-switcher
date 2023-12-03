@@ -11,7 +11,7 @@ function App() {
 
   return (
     <Router>
-      <Container>
+      <Container light={light}>
         <Header light={light} setLight={setLight} />
         <Routes>
           <Route
@@ -30,8 +30,8 @@ function App() {
 
 export default App;
 
-const Container = styled.div`
-  background-color: #fafafa;
+const Container = styled.div<{ light: boolean }>`
+  background-color: ${(p) => (p.light ? "#fafafa" : "#202C36")};
   min-height: 100vh;
   display: flex;
   flex-direction: column;

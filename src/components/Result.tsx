@@ -26,7 +26,7 @@ function Result({ data, setData, light }: Props) {
   }, []);
 
   return (
-    <Container>
+    <Container light={light}>
       {data.map((item, index) => {
         return (
           <div key={index}>
@@ -52,7 +52,7 @@ function Result({ data, setData, light }: Props) {
 
 export default Result;
 
-const Container = styled.div`
+const Container = styled.div<{ light: boolean }>`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -61,16 +61,21 @@ const Container = styled.div`
   padding: 0 55px;
 
   div {
-    background-color: #fff;
+    background-color: ${(p) => (p.light ? "#fff" : "#2B3844")};
     border-radius: 5px;
-    box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.03);
+    box-shadow: ${(p) =>
+      p.light
+        ? "0px 0px 7px 2px rgba(0, 0, 0, 0.03)"
+        : "0px 0px 7px 2px rgba(0, 0, 0, 0.03)"};
+    padding-bottom: 46px;
+
     img {
       width: 267px;
       border-radius: 5px 5px 0px 0px;
     }
 
     h1 {
-      color: #111517;
+      color: ${(p) => (p.light ? "#111517" : "#fff")};
       font-size: 18px;
       font-style: normal;
       font-weight: 800;
@@ -81,7 +86,7 @@ const Container = styled.div`
     h2,
     h3,
     h4 {
-      color: #111517;
+      color: ${(p) => (p.light ? "#111517" : "#fff")};
       font-size: 14px;
       font-style: normal;
       font-weight: 600;
@@ -90,7 +95,7 @@ const Container = styled.div`
     }
 
     span {
-      color: #111517;
+      color: ${(p) => (p.light ? "#111517" : "#fff")};
       font-size: 14px;
       font-style: normal;
       font-weight: 300;
