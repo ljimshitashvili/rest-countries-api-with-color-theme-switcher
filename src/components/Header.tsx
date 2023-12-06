@@ -50,6 +50,7 @@ const Container = styled.div<{ light: boolean }>`
     font-weight: 800;
     line-height: 20px;
     color: ${(p) => (p.light ? "#111517" : "#fff")};
+    cursor: pointer;
 
     @media (min-width: 1024px) {
       font-size: 24px;
@@ -61,6 +62,7 @@ const Container = styled.div<{ light: boolean }>`
     gap: 8px;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 
     h1 {
       font-size: 12px;
