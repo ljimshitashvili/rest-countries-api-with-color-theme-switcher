@@ -7,9 +7,13 @@ interface Props {
 }
 
 function Header({ light, setLight }: Props) {
+  const goToHomePage = () => {
+    location.reload();
+  };
+
   return (
     <Container light={light}>
-      <h1>Where in the world?</h1>
+      <h1 onClick={goToHomePage}>Where in the world?</h1>
       <div
         onClick={() => {
           setLight(!light);

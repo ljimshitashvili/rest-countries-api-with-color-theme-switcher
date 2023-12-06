@@ -27,6 +27,7 @@ function Home({
         setCountry={setCountry}
         country={country}
         setRegion={setRegion}
+        region={region}
       />
       <Result
         data={data}

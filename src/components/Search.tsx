@@ -7,9 +7,10 @@ interface Props {
   setCountry: (country: string) => void;
   country: string;
   setRegion: (region: string) => void;
+  region: string;
 }
 
-function Search({ light, setCountry, setRegion }: Props) {
+function Search({ light, setCountry, setRegion, region }: Props) {
   const [open, setOpen] = useState<boolean>(false);
 
   function changeCountryValue(e: React.ChangeEvent<HTMLInputElement>) {
@@ -53,7 +54,9 @@ function Search({ light, setCountry, setRegion }: Props) {
         />
       </div>
       <Filter light={light} onClick={changeOpen} open={open}>
-        <h1 className="filter">Filter by Region</h1>
+        <h1 className="filter">
+          {region === "" ? "Filter by Region" : region}
+        </h1>
         <img src={light ? arrow : arrowDark} alt="Arrow" />
         <div className="openCard">
           <h1 onClick={changeRegion}>America</h1>

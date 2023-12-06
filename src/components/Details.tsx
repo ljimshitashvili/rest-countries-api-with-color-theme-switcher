@@ -25,7 +25,7 @@ function Details({ data, light }: Props) {
               fill-rule="evenodd"
               clip-rule="evenodd"
               d="M5.81802 0.696699L6.87868 1.75736L3.3785 5.25754H16.7428L16.7428 6.74246H3.3785L6.87868 10.2426L5.81802 11.3033L0.514719 6L5.81802 0.696699Z"
-              fill={light ? "111517" : "#fff"}
+              fill={light ? "#111517" : "#fff"}
             />
           </svg>
           <p>Back</p>
