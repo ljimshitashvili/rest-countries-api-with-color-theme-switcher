@@ -30,7 +30,9 @@ function Result({ data, setData, light, country, region }: Props) {
   }, []);
 
   function filterByName() {
-    return data.filter((item) => item.name.toLowerCase().includes(country));
+    return data.filter((item) =>
+      item.name.toLowerCase().includes(country.toLowerCase())
+    );
   }
 
   const filteredDataByName = filterByName();
