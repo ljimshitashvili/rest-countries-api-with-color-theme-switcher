@@ -74,7 +74,7 @@ function Details({ data, light }: Props) {
       <div className="borders">
         <p>Border Countries:</p>
         <div className="countries">
-          {selectedItem?.borders.map((country, index) => (
+          {selectedItem?.borders?.map((country, index) => (
             <div key={index}>
               <span>{country}</span>
             </div>
