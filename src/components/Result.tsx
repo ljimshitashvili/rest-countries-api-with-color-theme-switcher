@@ -73,11 +73,22 @@ export default Result;
 
 const Container = styled.div<{ light: boolean }>`
   width: 100%;
+  max-width: 267px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
   padding: 0 55px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 60px;
+    padding: 0 80px;
+    max-width: unset;
+    align-items: unset;
+    justify-content: center;
+  }
 
   div {
     background-color: ${(p) => (p.light ? "#fff" : "#2B3844")};
@@ -88,8 +99,20 @@ const Container = styled.div<{ light: boolean }>`
         : "0px 0px 7px 2px rgba(0, 0, 0, 0.03)"};
     padding-bottom: 46px;
 
+    @media (min-width: 1024px) {
+      flex: 1 1 calc(25% - 60px);
+      max-width: calc(25% - 60px);
+      background-color: ${(p) => (p.light ? "#fff" : "#2B3844")};
+      border-radius: 5px;
+      box-shadow: ${(p) =>
+        p.light
+          ? "0px 0px 7px 2px rgba(0, 0, 0, 0.03)"
+          : "0px 0px 7px 2px rgba(0, 0, 0, 0.03)"};
+      padding-bottom: 67px;
+    }
+
     img {
-      width: 267px;
+      width: 100%;
       border-radius: 5px 5px 0px 0px;
     }
 

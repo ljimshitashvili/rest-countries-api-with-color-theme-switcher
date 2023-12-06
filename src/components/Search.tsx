@@ -78,6 +78,12 @@ const Container = styled.div<{ light: boolean }>`
   width: 100%;
   padding: 0 16px;
 
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 80px;
+  }
+
   .search {
     width: 100%;
     border-radius: 5px;
@@ -91,12 +97,21 @@ const Container = styled.div<{ light: boolean }>`
     display: flex;
     align-items: center;
 
+    @media (min-width: 1024px) {
+      max-width: 480px;
+      padding: 19px 32px;
+    }
+
     ::placeholder {
       color: ${(p) => (p.light ? "#c4c4c4" : "#FFF")};
       font-size: 12px;
       font-style: normal;
       font-weight: 400;
       line-height: 20px;
+
+      @media (min-width: 1024px) {
+        font-size: 14px;
+      }
     }
 
     input {
@@ -104,6 +119,11 @@ const Container = styled.div<{ light: boolean }>`
       border-color: transparent;
       width: 70%;
       color: ${(p) => (p.light ? "#111517" : "#fff")};
+      font-size: 12px;
+
+      @media (min-width: 1024px) {
+        font-size: 14px;
+      }
     }
   }
 `;
@@ -119,11 +139,20 @@ const Filter = styled.div<{ light: boolean; open: boolean }>`
   width: 200px;
   align-items: center;
   position: relative;
+  cursor: pointer;
+
+  @media (min-width: 1024px) {
+    padding: 18px 18px 18px 24px;
+  }
 
   .filter {
     font-size: 12px;
     color: ${(p) => (p.light ? "#111517" : "#fff")};
     font-weight: 400;
+
+    @media (min-width: 1024px) {
+      font-size: 14px;
+    }
   }
 
   .openCard {
@@ -137,11 +166,17 @@ const Filter = styled.div<{ light: boolean; open: boolean }>`
     display: ${(p) => (p.open ? "flex" : "none")};
     flex-direction: column;
     gap: 8px;
+    cursor: auto;
 
     h1 {
       font-size: 12px;
       color: ${(p) => (p.light ? "#111517" : "#fff")};
       font-weight: 400;
+      cursor: pointer;
+
+      @media (min-width: 1024px) {
+        font-size: 14px;
+      }
     }
   }
 `;
