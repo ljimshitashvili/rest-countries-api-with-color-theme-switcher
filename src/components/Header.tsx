@@ -40,11 +40,20 @@ const Container = styled.div<{ light: boolean }>`
       : "0px 2px 4px 0px rgba(0, 0, 0, 0.06)"};
   margin-bottom: 24px;
 
+  @media (min-width: 1024px) {
+    padding: 24px 80px;
+    margin-bottom: 48px;
+  }
+
   h1 {
     font-size: 14px;
     font-weight: 800;
     line-height: 20px;
     color: ${(p) => (p.light ? "#111517" : "#fff")};
+
+    @media (min-width: 1024px) {
+      font-size: 24px;
+    }
   }
 
   div {
@@ -56,6 +65,10 @@ const Container = styled.div<{ light: boolean }>`
     h1 {
       font-size: 12px;
       font-weight: 600;
+
+      @media (min-width: 1024px) {
+        font-size: 16px;
+      }
     }
   }
 `;
