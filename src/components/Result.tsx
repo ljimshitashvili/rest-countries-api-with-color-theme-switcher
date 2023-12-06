@@ -9,9 +9,10 @@ interface Props {
   setData: (data: Root[]) => void;
   light: boolean;
   country: string;
+  region: string;
 }
 
-function Result({ data, setData, light, country }: Props) {
+function Result({ data, setData, light, country, region }: Props) {
   useEffect(() => {
     try {
       const fetchData = async () => {
@@ -32,7 +33,15 @@ function Result({ data, setData, light, country }: Props) {
     return data.filter((item) => item.name.toLowerCase().includes(country));
   }
 
-  const filteredData = filterByName();
+  const filteredDataByName = filterByName();
+
+  function filterByRegion() {
+    return filteredDataByName.filter((item) =>
+      item.region.toLowerCase().includes(region.toLowerCase())
+    );
+  }
+
+  const filteredData = filterByRegion();
 
   return (
     <Container light={light}>

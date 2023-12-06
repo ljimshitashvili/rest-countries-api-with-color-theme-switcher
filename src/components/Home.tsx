@@ -7,13 +7,34 @@ interface Props {
   light: boolean;
   setCountry: (country: string) => void;
   country: string;
+  setRegion: (region: string) => void;
+  region: string;
 }
 
-function Home({ data, setData, light, setCountry, country }: Props) {
+function Home({
+  data,
+  setData,
+  light,
+  setCountry,
+  country,
+  setRegion,
+  region,
+}: Props) {
   return (
     <>
-      <Search light={light} setCountry={setCountry} country={country} />
-      <Result data={data} setData={setData} light={light} country={country} />
+      <Search
+        light={light}
+        setCountry={setCountry}
+        country={country}
+        setRegion={setRegion}
+      />
+      <Result
+        data={data}
+        setData={setData}
+        light={light}
+        country={country}
+        region={region}
+      />
     </>
   );
 }

@@ -1,15 +1,27 @@
 import styled from "styled-components";
 import { arrow, arrowDark } from "../assets";
+import { useState } from "react";
 
 interface Props {
   light: boolean;
   setCountry: (country: string) => void;
   country: string;
+  setRegion: (region: string) => void;
 }
 
-function Search({ light, setCountry, country }: Props) {
+function Search({ light, setCountry, setRegion }: Props) {
+  const [open, setOpen] = useState<boolean>(false);
+
   function changeCountryValue(e: React.ChangeEvent<HTMLInputElement>) {
     setCountry(e.currentTarget.value);
+  }
+
+  function changeRegion(e: React.MouseEvent<HTMLHeadingElement>) {
+    setRegion((e.target as HTMLDivElement).textContent || "");
+  }
+
+  function changeOpen() {
+    setOpen(!open);
   }
 
   return (
@@ -40,9 +52,16 @@ function Search({ light, setCountry, country }: Props) {
           onChange={changeCountryValue}
         />
       </div>
-      <Filter light={light}>
+      <Filter light={light} onClick={changeOpen} open={open}>
         <h1 className="filter">Filter by Region</h1>
         <img src={light ? arrow : arrowDark} alt="Arrow" />
+        <div className="openCard">
+          <h1 onClick={changeRegion}>America</h1>
+          <h1 onClick={changeRegion}>Africa</h1>
+          <h1 onClick={changeRegion}>Asia</h1>
+          <h1 onClick={changeRegion}>Europe</h1>
+          <h1 onClick={changeRegion}>Oceania</h1>
+        </div>
       </Filter>
     </Container>
   );
@@ -86,7 +105,7 @@ const Container = styled.div<{ light: boolean }>`
   }
 `;
 
-const Filter = styled.div<{ light: boolean }>`
+const Filter = styled.div<{ light: boolean; open: boolean }>`
   padding: 14px 19px 14px 24px;
   background-color: ${(p) => (p.light ? "#fff" : "#2B3844")};
   border-radius: 5px;
@@ -96,10 +115,30 @@ const Filter = styled.div<{ light: boolean }>`
   justify-content: space-between;
   width: 200px;
   align-items: center;
+  position: relative;
 
   .filter {
     font-size: 12px;
     color: ${(p) => (p.light ? "#111517" : "#fff")};
     font-weight: 400;
+  }
+
+  .openCard {
+    padding: 16px 24px;
+    background-color: ${(p) => (p.light ? "#fff" : "#2B3844")};
+    width: 200px;
+    border-radius: 5px;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    display: ${(p) => (p.open ? "flex" : "none")};
+    flex-direction: column;
+    gap: 8px;
+
+    h1 {
+      font-size: 12px;
+      color: ${(p) => (p.light ? "#111517" : "#fff")};
+      font-weight: 400;
+    }
   }
 `;
