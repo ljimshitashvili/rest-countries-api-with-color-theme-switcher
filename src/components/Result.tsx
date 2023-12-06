@@ -23,7 +23,6 @@ function Result({ data, setData, light, country, region }: Props) {
         setData(fetchedData);
       };
       fetchData();
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
