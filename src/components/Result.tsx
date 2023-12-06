@@ -73,7 +73,6 @@ export default Result;
 
 const Container = styled.div<{ light: boolean }>`
   width: 100%;
-  max-width: 267px;
   display: flex;
   flex-direction: column;
   align-items: center;

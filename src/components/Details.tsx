@@ -12,73 +12,79 @@ function Details({ data, light }: Props) {
   const selectedItem = data.find((_item, index) => index.toString() === id);
   return (
     <Container light={light}>
-      <Link to="/">
-        <div className="back">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="17"
-            height="12"
-            viewBox="0 0 17 12"
-            fill="none"
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M5.81802 0.696699L6.87868 1.75736L3.3785 5.25754H16.7428L16.7428 6.74246H3.3785L6.87868 10.2426L5.81802 11.3033L0.514719 6L5.81802 0.696699Z"
-              fill={light ? "#111517" : "#fff"}
-            />
-          </svg>
-          <p>Back</p>
+      <div>
+        <Link to="/">
+          <div className="back">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="17"
+              height="12"
+              viewBox="0 0 17 12"
+              fill="none"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M5.81802 0.696699L6.87868 1.75736L3.3785 5.25754H16.7428L16.7428 6.74246H3.3785L6.87868 10.2426L5.81802 11.3033L0.514719 6L5.81802 0.696699Z"
+                fill={light ? "#111517" : "#fff"}
+              />
+            </svg>
+            <p>Back</p>
+          </div>
+        </Link>
+        <img src={selectedItem?.flags.png} alt="Flag" />
+      </div>
+      <div className="texts">
+        <h1>{selectedItem?.name}</h1>
+        <div className="infoContainer">
+          <div className="info1">
+            <p>
+              Native Name: <span>{selectedItem?.nativeName}</span>
+            </p>
+            <p>
+              Population: <span>{selectedItem?.population}</span>
+            </p>
+            <p>
+              Region: <span>{selectedItem?.region}</span>
+            </p>
+            <p>
+              Sub Region: <span>{selectedItem?.subregion}</span>
+            </p>
+            <p>
+              Capital: <span>{selectedItem?.capital}</span>
+            </p>
+          </div>
+          <div className="info2">
+            <p>
+              Top Level Domain: <span>{selectedItem?.topLevelDomain}</span>
+            </p>
+            <p>
+              Currencies:{" "}
+              <span>
+                {selectedItem?.currencies
+                  .map((currency) => currency.name)
+                  .join(", ")}
+              </span>
+            </p>
+            <p>
+              Languages:{" "}
+              <span>
+                {selectedItem?.languages
+                  .map((language) => language.name)
+                  .join(", ")}
+              </span>
+            </p>
+          </div>
         </div>
-      </Link>
-      <img src={selectedItem?.flags.png} alt="Flag" />
-      <h1>{selectedItem?.name}</h1>
-      <div className="info1">
-        <p>
-          Native Name: <span>{selectedItem?.nativeName}</span>
-        </p>
-        <p>
-          Population: <span>{selectedItem?.population}</span>
-        </p>
-        <p>
-          Region: <span>{selectedItem?.region}</span>
-        </p>
-        <p>
-          Sub Region: <span>{selectedItem?.subregion}</span>
-        </p>
-        <p>
-          Capital: <span>{selectedItem?.capital}</span>
-        </p>
-      </div>
-      <div className="info2">
-        <p>
-          Top Level Domain: <span>{selectedItem?.topLevelDomain}</span>
-        </p>
-        <p>
-          Currencies:{" "}
-          <span>
-            {selectedItem?.currencies
-              .map((currency) => currency.name)
-              .join(", ")}
-          </span>
-        </p>
-        <p>
-          Languages:{" "}
-          <span>
-            {selectedItem?.languages
-              .map((language) => language.name)
-              .join(", ")}
-          </span>
-        </p>
-      </div>
-      <div className="borders">
-        <p>Border Countries:</p>
-        <div className="countries">
-          {selectedItem?.borders?.map((country, index) => (
-            <div key={index}>
-              <span>{country}</span>
-            </div>
-          ))}
+        <div className="borders">
+          <p>Border Countries:</p>
+          <div className="countries">
+            {selectedItem?.borders?.map((country, index) => (
+              <div key={index}>
+                <span>{country}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Container>
@@ -93,6 +99,13 @@ const Container = styled.div<{ light: boolean }>`
   flex-direction: column;
   max-width: 400px;
   width: 100%;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: unset;
+    padding: 0 80px;
+  }
 
   .back {
     width: 104px;
@@ -119,6 +132,18 @@ const Container = styled.div<{ light: boolean }>`
     border-radius: 5.7px;
     margin-bottom: 44px;
     width: 100%;
+
+    @media (min-width: 1024px) {
+      width: 550px;
+    }
+  }
+
+  .texts {
+    @media (min-width: 1024px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+    }
   }
 
   h1 {
@@ -129,6 +154,18 @@ const Container = styled.div<{ light: boolean }>`
     line-height: normal;
     margin-bottom: 16px;
     width: 100%;
+
+    @media (min-width: 1024px) {
+      font-size: 32px;
+      margin-bottom: 26px;
+    }
+  }
+
+  .infoContainer {
+    @media (min-width: 1024px) {
+      display: flex;
+      gap: 110px;
+    }
   }
 
   .info1 {
@@ -147,12 +184,20 @@ const Container = styled.div<{ light: boolean }>`
     font-weight: 600;
     line-height: 32px;
 
+    @media (min-width: 1024px) {
+      font-size: 16px;
+    }
+
     span {
       color: ${(p) => (p.light ? "#111517" : "#fff")};
       font-size: 14px;
       font-style: normal;
       font-weight: 300;
       line-height: 32px;
+
+      @media (min-width: 1024px) {
+        font-size: 16px;
+      }
     }
   }
   .countries {
@@ -184,6 +229,14 @@ const Container = styled.div<{ light: boolean }>`
     margin-bottom: 100px;
     p {
       margin-bottom: 16px;
+    }
+
+    @media (min-width: 1024px) {
+      display: flex;
+
+      p {
+        width: 200px;
+      }
     }
   }
 `;
