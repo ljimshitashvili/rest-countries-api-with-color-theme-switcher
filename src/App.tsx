@@ -9,6 +9,7 @@ function App() {
   const [data, setData] = useState<Root[]>([]);
   const [light, setLight] = useState<boolean>(true);
   const [country, setCountry] = useState<string>("");
+  console.log(country);
 
   return (
     <Router>

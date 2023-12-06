@@ -8,11 +8,9 @@ interface Props {
 }
 
 function Search({ light, setCountry, country }: Props) {
-  const changeCountryValue = (e: string) => {
-    setCountry(e);
-  };
-
-  console.log(country);
+  function changeCountryValue(e: React.ChangeEvent<HTMLInputElement>) {
+    setCountry(e.currentTarget.value);
+  }
 
   return (
     <Container light={light}>
@@ -36,9 +34,10 @@ function Search({ light, setCountry, country }: Props) {
         </svg>
 
         <input
+          id="word"
           type="text"
           placeholder="Search for a country..."
-          onChange={() => changeCountryValue}
+          onChange={changeCountryValue}
         />
       </div>
       <Filter light={light}>

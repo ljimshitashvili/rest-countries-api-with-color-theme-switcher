@@ -13,7 +13,7 @@ function Home({ data, setData, light, setCountry, country }: Props) {
   return (
     <>
       <Search light={light} setCountry={setCountry} country={country} />
-      <Result data={data} setData={setData} light={light} />
+      <Result data={data} setData={setData} light={light} country={country} />
     </>
   );
 }
