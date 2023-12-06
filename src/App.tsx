@@ -32,7 +32,14 @@ function App() {
           />
           <Route
             path="/details/:id"
-            element={<Details data={data} light={light} />}
+            element={
+              <Details
+                data={data}
+                light={light}
+                country={country}
+                region={region}
+              />
+            }
           />
         </Routes>
       </Container>

@@ -5,11 +5,33 @@ import { useParams, Link } from "react-router-dom";
 interface Props {
   data: Root[];
   light: boolean;
+  country: string;
+  region: string;
 }
 
-function Details({ data, light }: Props) {
+function Details({ data, light, country, region }: Props) {
   const { id } = useParams<{ id: string }>();
-  const selectedItem = data.find((_item, index) => index.toString() === id);
+
+  function filterByName() {
+    return data.filter((item) =>
+      item.name.toLowerCase().includes(country.toLowerCase())
+    );
+  }
+
+  const filteredDataByName = filterByName();
+
+  function filterByRegion() {
+    return filteredDataByName.filter((item) =>
+      item.region.toLowerCase().includes(region.toLowerCase())
+    );
+  }
+
+  const filteredData = filterByRegion();
+
+  const selectedItem = filteredData.find(
+    (_item, index) => index.toString() === id
+  );
+
   return (
     <Container light={light}>
       <div>
